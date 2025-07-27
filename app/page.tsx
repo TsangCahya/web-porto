@@ -203,7 +203,10 @@ export default function Portfolio() {
                 View My Projects
                 <ArrowDown className="ml-2 w-4 h-4" />
               </Button>
-              <Button className="bg-white hover:bg-slate-100 text-slate-900 px-8 py-3 rounded-full text-lg font-medium transition-all duration-200 hover:scale-105">
+              <Button 
+                onClick={() => scrollToSection("about")}
+                className="bg-white hover:bg-slate-100 text-slate-900 px-8 py-3 rounded-full text-lg font-medium transition-all duration-200 hover:scale-105"
+              >
                 📊 See My Stats
               </Button>
             </div>

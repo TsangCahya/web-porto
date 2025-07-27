@@ -8,6 +8,98 @@
   }
 }
 
+/* Marquee Animation Styles */
+.marquee-wrapper {
+  overflow: hidden;
+  white-space: nowrap;
+  position: relative;
+  height: 140px !important;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.marquee-left,
+.marquee-right {
+  display: inline-flex;
+  gap: 1.5rem;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  flex-shrink: 0;
+  height: 120px !important;
+  align-items: center;
+  min-width: max-content;
+}
+
+.marquee-left {
+  animation: marquee-left 30s linear infinite;
+}
+
+.marquee-right {
+  animation: marquee-right 25s linear infinite;
+}
+
+.marquee-item {
+  flex-shrink: 0;
+  width: 120px;
+  height: 120px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: normal;
+  transition: all 0.3s ease;
+}
+
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Pause on hover */
+.marquee-wrapper:hover .marquee-left,
+.marquee-wrapper:hover .marquee-right {
+  animation-play-state: paused;
+}
+
+/* Hardware acceleration */
+.marquee-left,
+.marquee-right {
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+  transform: translateZ(0);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .marquee-wrapper {
+    height: 120px;
+  }
+  
+  .marquee-item {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .marquee-left,
+  .marquee-right {
+    height: 100px;
+  }
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
